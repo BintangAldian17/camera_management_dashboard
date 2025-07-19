@@ -1,5 +1,9 @@
 import axios from "axios";
 import { API_URL } from "../constant";
+import toast from "react-hot-toast";
+import { createBrowserHistory } from "@tanstack/react-router";
+
+const history = createBrowserHistory();
 
 const baseApi = axios.create({ baseURL: API_URL });
 
@@ -22,7 +26,8 @@ authApi.interceptors.response.use(
     if (err.response?.status === 401) {
       localStorage.removeItem("token");
       sessionStorage.removeItem("token");
-      window.location.href = "/login";
+      toast.error("Session expired, please login again");
+      history.push("/login");
     }
     return Promise.reject(err);
   }

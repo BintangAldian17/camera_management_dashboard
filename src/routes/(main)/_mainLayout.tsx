@@ -9,8 +9,9 @@ export const Route = createFileRoute("/(main)/_mainLayout")({
       queryKey: ["user"],
       queryFn: getCurrentUser,
     });
-    const isAdmin = user.username.trim().toLocaleLowerCase() === "admin";
-    return { user: { ...user, isAdmin } };
+    const isAdmin =
+      user && user?.username?.trim().toLocaleLowerCase() === "admin";
+    return { user: user ? { ...user, isAdmin } : null };
   },
 });
 

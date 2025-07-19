@@ -1,5 +1,6 @@
 import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
+import SpinnerIcon from "@/components/atoms/icons/SpinnerIcon";
 
 const buttonVariants = cva(
   "flex items-center justify-center rounded-[6px] bg-primary text-white font-semibold cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed",
@@ -11,7 +12,7 @@ const buttonVariants = cva(
       },
       size: {
         default: "px-4 py-[7px] px-2.5",
-        fit: "h-[50px] w-full",
+        grow: "h-[50px] w-full",
       },
     },
     defaultVariants: {
@@ -24,6 +25,7 @@ export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof buttonVariants> {
   icon?: React.ReactNode;
+  isLoading?: boolean;
 }
 
 export default function Button({
@@ -32,6 +34,7 @@ export default function Button({
   className,
   children,
   icon,
+  isLoading = false,
   ...props
 }: ButtonProps) {
   return (
@@ -39,10 +42,14 @@ export default function Button({
       className={cn(buttonVariants({ variant, size, className }))}
       {...props}
     >
-      <span className="flex items-center gap-4">
-        {icon}
-        {children}
-      </span>
+      {isLoading ? (
+        <SpinnerIcon />
+      ) : (
+        <span className="flex items-center gap-4">
+          {icon}
+          {children}
+        </span>
+      )}
     </button>
   );
 }

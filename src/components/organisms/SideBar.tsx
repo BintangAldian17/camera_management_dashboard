@@ -44,29 +44,36 @@ export default function SideBar() {
           isOpen ? "w-[318px]" : "xl:w-0 w-[318px] -translate-x-full"
         )}
       >
-        <div className="flex flex-col items-center mt-[25px] gap-1">
-          <img alt="Logo" src={Logo} className="w-[89px] h-[73px]" />
-          <h1 className="uppercase -tracking-[2%] text-[11px] font-bold">
-            Asta Computer Vision
-          </h1>
-        </div>
-        <nav className="mt-[35px] flex flex-col px-[19px] gap-[30px]">
-          {sidebarsData.map((data) => (
-            <div key={data.id} className="flex flex-col">
-              <span className=" text-placeholder relative before:absolute before:content-[''] before:top-1/2 before:-translate-y-1/2 before:h-[1px] before:bg-placeholder before:w-full w-fit before:right-full">
-                <div className="px-2.5 text-sm">{data.group}</div>
-              </span>
+        <div
+          className={cn(
+            "w-full h-full transition-all ease-in-out duration-100",
+            isOpen ? "opacity-100" : "opacity-0"
+          )}
+        >
+          <div className="flex flex-col items-center mt-[25px] gap-1">
+            <img alt="Logo" src={Logo} className="w-[89px] h-[73px]" />
+            <h1 className="uppercase -tracking-[2%] text-[11px] font-bold">
+              Asta Computer Vision
+            </h1>
+          </div>
+          <nav className="mt-[35px] flex flex-col px-[19px] gap-[30px]">
+            {sidebarsData.map((data) => (
+              <div key={data.id} className="flex flex-col">
+                <span className=" text-placeholder relative before:absolute before:content-[''] before:top-1/2 before:-translate-y-1/2 before:h-[1px] before:bg-placeholder before:w-full w-fit before:right-full">
+                  <div className="px-2.5 text-sm">{data.group}</div>
+                </span>
 
-              <Button
-                icon={<data.icon />}
-                variant={data.isDropDown ? "ghost" : "default"}
-                className="rounded-[8px] justify-start mt-[10px] font-light"
-              >
-                {data.label}
-              </Button>
-            </div>
-          ))}
-        </nav>
+                <Button
+                  icon={<data.icon />}
+                  variant={data.isDropDown ? "ghost" : "default"}
+                  className="rounded-[8px] justify-start mt-[10px] font-light"
+                >
+                  {data.label}
+                </Button>
+              </div>
+            ))}
+          </nav>
+        </div>
       </aside>
     </>
   );

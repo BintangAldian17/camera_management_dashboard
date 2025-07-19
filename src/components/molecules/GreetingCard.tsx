@@ -9,7 +9,7 @@ export default function GreetingCard() {
 
   return (
     <Card className="flex flex-col p-5 gap-[5px]">
-      <h2 className="font-bold text-[32px]">Hello, {userData.username}</h2>
+      <h2 className="font-bold text-[32px]">Hello, {userData?.username}</h2>
       <span className="text-muted-foreground">Have a great working day!</span>
     </Card>
   );

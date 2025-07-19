@@ -8,10 +8,13 @@ import LogoSmall from "@/assets/images/logo-small.png";
 import XIcon from "@/components/atoms/icons/XIcon";
 import InputField from "@/components/molecules/InputField";
 import Button from "@/components/atoms/Button";
+import { useInputFocus } from "@/lib/hooks/use-input-focus";
+import toast from "react-hot-toast";
 
 export default function LoginForm() {
   const navigate = useNavigate();
   const { signIn } = useAuth();
+  const { ref: usernameInput } = useInputFocus();
 
   const [errorMessage, setErrorMessage] = useState("");
   const [loginValues, setLoginValues] = useState<LoginPayload>({
@@ -33,7 +36,8 @@ export default function LoginForm() {
       onSuccess: (data) => {
         signIn(data.token);
         setLoginValues({ password: "", username: "" });
-        navigate({ to: "/dashboard" });
+        navigate({ to: "/" });
+        toast.success("Login successful!");
       },
       onError: (err: unknown) => {
         if (err instanceof AxiosError) {
@@ -67,6 +71,7 @@ export default function LoginForm() {
           </div>
         )}
         <InputField
+          ref={usernameInput}
           textLabel="Email/Username"
           name="username"
           value={loginValues.username}
@@ -81,7 +86,8 @@ export default function LoginForm() {
         />
         <Button
           type="submit"
-          size="fit"
+          isLoading={status === "pending"}
+          size="grow"
           disabled={
             status === "pending" ||
             loginValues.username.trim() === "" ||
