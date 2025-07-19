@@ -36,7 +36,7 @@ export default function GraphCard({ data, title, isLoading }: GraphCardProps) {
                   <SkeletonBox className="animate-pulse w-full h-full" />
                 }
               >
-                <GraphChart chartData={chartData} rect={rect} />
+                <GraphChart chartData={chartData ?? []} rect={rect} />
               </Suspense>
             )}
           </>

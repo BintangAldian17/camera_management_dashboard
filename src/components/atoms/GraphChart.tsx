@@ -4,10 +4,17 @@ import type { ObserverRect } from "@/lib/hooks/use-resize-observer";
 
 type GraphChartprops = {
   rect: ObserverRect;
-  chartData: { date: string; value: number }[] | undefined;
+  chartData: { date: string; value: number }[];
 };
 
 export default function GraphChart({ chartData, rect }: GraphChartprops) {
+  if (chartData.length === 0) {
+    return (
+      <div className="w-full h-full flex items-center justify-center text-muted-foreground xl:text-xl text-sm italic">
+        No chart data available yet
+      </div>
+    );
+  }
   return (
     <AreaChart data={chartData} width={rect.width} height={rect.height}>
       <defs>
