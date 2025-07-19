@@ -8,7 +8,7 @@ type CameraCardProps = {
   accent: "yellow" | "red" | "green";
   icon: React.ReactNode;
   className?: string;
-  isLoading?: boolean; // Tambah props isLoading
+  isLoading?: boolean;
 };
 
 export default function CameraCard({
@@ -17,7 +17,7 @@ export default function CameraCard({
   accent,
   icon,
   className,
-  isLoading = false, // Default false
+  isLoading = false,
 }: CameraCardProps) {
   const getAccent = () => {
     switch (accent) {
