@@ -46,7 +46,7 @@ camera_management_dashboard/
 1. **Clone the repository**:
 
    ```bash
-   git clone https://github.com/your-repo/camera-management-dashboard.git
+   git clone https://github.com/BintangAldian17/camera_management_dashboard
    cd camera-management-dashboard
    ```
 
