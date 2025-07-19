@@ -1,69 +1,98 @@
-# React + TypeScript + Vite
+# Camera Management Dashboard
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A web-based dashboard for monitoring camera systems, built with React, TypeScript, and Vite.
 
-Currently, two official plugins are available:
+## 🌐 Deployment
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Access the live application here: [Camera Management Dashboard](https://camera-management-dashboard-kha4.vercel.app/)
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 📂 Project Structure
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```
+camera_management_dashboard/
+├── src/
+│   ├── components/       # Reusable UI components
+│   │   ├── atoms/        # Smallest building blocks (e.g., Button, Input)
+│   │   ├── molecules/    # Combination of atoms (e.g., InputField, GraphCard)
+│   │   ├── organisms/    # Complex components (e.g., SideBar, LoginForm)
+│   │   ├── templates/    # Page layouts (e.g., DashboardLayout, LoginLayout)
+│   │   └── pages/        # Page-level components
+│   ├── context/          # React Context for global state (e.g., SidebarContext)
+│   ├── lib/              # Utility functions, hooks, and API services
+│   ├── routes/           # Application routes
+│   ├── types/            # TypeScript type definitions
+│   ├── assets/           # Static assets (e.g., images, icons)
+│   └── index.css         # Global styles
+├── public/               # Static files
+├── .gitignore            # Files and directories to ignore in Git
+├── package.json          # Project dependencies and scripts
+├── tsconfig.json         # TypeScript configuration
+├── vite.config.ts        # Vite configuration
+└── README.md             # Project documentation
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## 🚀 Getting Started
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+### Prerequisites
+
+- Node.js (v18 or higher)
+
+### Steps to Run Locally
+
+1. **Clone the repository**:
+
+   ```bash
+   git clone https://github.com/your-repo/camera-management-dashboard.git
+   cd camera-management-dashboard
+   ```
+
+2. **Install dependencies**:
+   ```bash
+   yarn install
+   ```
+3. \*\*Environment Variables
+   ```bash
+   VITE_API_URL=<API URL>
+
+   ```
+4. **Start the development server**:
+
+   ```bash
+   yarn run dev
+   ```
+
+5. **Open in browser**:
+   Navigate to [http://localhost:5173](http://localhost:5173).
+
+---
+
+## 🛠️ Tech Stack
+
+- **Frontend**: React, TypeScript
+- **State Management**: React Context
+- **Routing**: TanStack Router
+- **Data Fetching**: TanStack React Query
+- **Styling**: Tailwind CSS
+- **Charts**: Recharts
+- **HTTP Client**: Axios
+- **Build Tool**: Vite
+
+---
+
+## 📜 Scripts
+
+- `yarn dev`: Start the development server.
+- `yarn build`: Build the project for production.
+- `yarn preview`: Preview the production build.
+- `yarn lint`: Run ESLint to check for code issues.
+
+---
+
+## 📦 Deployment
+
+This project is deployed on **Vercel**. Visit the live application here:  
+[https://camera-management-dashboard-kha4.vercel.app/](https://camera-management-dashboard-kha4.vercel.app/)
