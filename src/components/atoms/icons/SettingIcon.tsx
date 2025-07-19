@@ -1,4 +1,4 @@
-import { ReactComponent as Setting } from "../../../assets/icons/setting.svg";
+import Setting from "@/assets/icons/setting.svg?react";
 
 export default function SettingIcon() {
   return <Setting />;

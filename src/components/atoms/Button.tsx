@@ -1,6 +1,5 @@
 import { cva, type VariantProps } from "class-variance-authority";
-import React from "react";
-import { cn } from "../../lib/utils";
+import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
   "flex items-center justify-center rounded-[6px] bg-primary text-white font-semibold cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed",

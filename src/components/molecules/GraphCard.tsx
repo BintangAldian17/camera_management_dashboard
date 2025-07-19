@@ -1,55 +1,59 @@
-import { cn } from "../../lib/utils";
 import Card from "../atoms/Card";
-import GraphCardSkeleton from "./skeleton/GraphCardSkeleton";
+import { AreaChart, Area } from "recharts";
+import type { GraphData } from "../../types/graph-type";
+import { useResizeObserver } from "../../lib/hooks/use-resize-observer";
+import SkeletonBox from "../atoms/Skeleton";
+import { useMemo } from "react";
 
 type GraphCardProps = {
-  total: number;
-  desc: string;
-  accent: "yellow" | "red" | "green";
-  icon: React.ReactNode;
-  className?: string;
-  isLoading?: boolean; // Tambah props isLoading
+  title: string;
+  data: GraphData | undefined;
+  isLoading: boolean;
 };
 
-export default function GraphCard({
-  desc,
-  total,
-  accent,
-  icon,
-  className,
-  isLoading = false, // Default false
-}: GraphCardProps) {
-  const getAccent = () => {
-    switch (accent) {
-      case "yellow":
-        return "bg-warning";
-      case "red":
-        return "bg-destructive";
-      case "green":
-        return "bg-primary";
-    }
-  };
+export default function GraphCard({ data, title, isLoading }: GraphCardProps) {
+  const [ref, rect] = useResizeObserver();
+
+  const chartData = useMemo(() => {
+    return data?.labels.map((label, index) => ({
+      date: label,
+      value: data.values[index],
+    }));
+  }, [data]);
 
   return (
-    <Card className={cn("flex items-center px-5 w-full", className)}>
-      {isLoading ? (
-        <GraphCardSkeleton />
-      ) : (
-        <>
-          <div
-            className={cn(
-              "size-[60px] rounded-full flex items-center justify-center",
-              getAccent()
+    <Card as="template" className="flex flex-col p-[30px] gap-5 h-[300px]">
+      <h2 className="text-[32px] font-bold">{title}</h2>
+      <div className="flex-1" ref={ref}>
+        {isLoading ? (
+          <SkeletonBox className="w-full h-full" />
+        ) : (
+          <>
+            {rect.width > 0 && rect.height > 0 && (
+              <AreaChart
+                data={chartData}
+                width={rect.width}
+                height={rect.height}
+              >
+                <defs>
+                  <linearGradient id="fillColor" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stopColor="#2DAA63" stopOpacity={0.8} />
+                    <stop offset="100%" stopColor="#FFFFFF" stopOpacity={0.2} />
+                  </linearGradient>
+                </defs>
+
+                <Area
+                  type="monotone"
+                  dataKey="value"
+                  stroke="#004820"
+                  strokeWidth={3}
+                  fill="url(#fillColor)"
+                />
+              </AreaChart>
             )}
-          >
-            {icon}
-          </div>
-          <div className="flex flex-col justify-center gap-2.5 p-5">
-            <h2 className="font-bold text-primary text-[32px] ">{total}</h2>
-            <p className="text-muted-foreground text-[20px]">{desc}</p>
-          </div>
-        </>
-      )}
+          </>
+        )}
+      </div>
     </Card>
   );
 }

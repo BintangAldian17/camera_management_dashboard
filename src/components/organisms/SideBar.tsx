@@ -1,10 +1,9 @@
-import React from "react";
-import Logo from "../../assets/images/logo.png";
-import Button from "../atoms/Button";
-import GridIcon from "../atoms/icons/GridIcon";
-import SettingIcon from "../atoms/icons/SettingIcon";
-import { useSidebar } from "../../context/SidebarContext";
-import { cn } from "../../lib/utils";
+import { useSidebar } from "@/context/SidebarContext";
+import Logo from "@/assets/images/logo.png";
+import GridIcon from "@/components/atoms/icons/GridIcon";
+import SettingIcon from "@/components/atoms/icons/SettingIcon";
+import { cn } from "@/lib/utils";
+import Button from "@/components/atoms/Button";
 
 const sidebarsData = [
   {

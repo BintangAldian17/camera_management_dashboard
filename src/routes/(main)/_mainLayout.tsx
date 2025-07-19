@@ -1,6 +1,6 @@
 import { createFileRoute, Outlet } from "@tanstack/react-router";
-import SideBar from "../../components/organisms/SideBar";
-import { getCurrentUser } from "../../lib/api/user-api";
+import SideBar from "@/components/organisms/SideBar";
+import { getCurrentUser } from "@/lib/api/user-api";
 
 export const Route = createFileRoute("/(main)/_mainLayout")({
   component: RouteComponent,

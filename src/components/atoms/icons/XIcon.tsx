@@ -1,4 +1,4 @@
-import { ReactComponent as X } from "../../../assets/icons/x.svg";
+import X from "@/assets/icons/x.svg?react";
 
 export default function XIcon() {
   return <X />;

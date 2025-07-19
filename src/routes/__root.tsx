@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Outlet, createRootRouteWithContext } from "@tanstack/react-router";
 import type { QueryClient } from "@tanstack/react-query";
-import type { UserData } from "../types/user-type";
+import type { UserData } from "@/types/user-type";
 
 type UserContext = {
   isAdmin: boolean;

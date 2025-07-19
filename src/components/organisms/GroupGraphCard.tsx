@@ -1,38 +1,35 @@
-import GraphCard from "../molecules/GraphCard";
-import { useCameraQuery } from "../../lib/api/camera-api";
-import CameraVideoOffIcon from "../atoms/icons/CameraVideoOffIcon";
-import CameraVideoIcon from "../atoms/icons/CameraVideoIcon";
+import GraphCard from "@/components/molecules/GraphCard";
+import { useSidebar } from "@/context/SidebarContext";
+import { useGraphQuery } from "@/lib/api/graph-api";
+import { cn } from "@/lib/utils";
 
 export default function GroupGraphCard() {
-  const { data, status } = useCameraQuery();
-  const isLoading = status === "pending";
-
+  const { isOpen } = useSidebar();
+  const cpusData = useGraphQuery("cpu");
+  const memoriesData = useGraphQuery("memory");
+  const storagesData = useGraphQuery("storage");
   return (
-    <div className="grid-cols-1 md:grid-cols-2 xl:grid-cols-3 grid gap-[15px] w-full">
+    <section
+      className={cn(
+        "grid gap-[15px] grid-cols-1 xl:grid-cols-2",
+        isOpen ? "xl:grid-cols-2" : "2xl:grid-cols-3"
+      )}
+    >
       <GraphCard
-        className="md:col-span-2 xl:col-span-1"
-        icon={<CameraVideoIcon />}
-        total={data?.total_cameras ?? 0}
-        desc="Camera Total"
-        accent="yellow"
-        isLoading={isLoading}
+        isLoading={cpusData.status === "pending"}
+        data={cpusData.data}
+        title="CPU Utilization"
       />
-
       <GraphCard
-        icon={<CameraVideoIcon />}
-        total={data?.active_cameras.length ?? 0}
-        desc="Active Camera"
-        accent="green"
-        isLoading={isLoading}
+        isLoading={memoriesData.status === "pending"}
+        data={memoriesData.data}
+        title="Memory Utilization"
       />
-
       <GraphCard
-        icon={<CameraVideoOffIcon />}
-        total={data?.inactive_cameras.length ?? 0}
-        desc="Inactive Camera"
-        accent="red"
-        isLoading={isLoading}
+        isLoading={storagesData.status === "pending"}
+        data={storagesData.data}
+        title="Storage Utilization"
       />
-    </div>
+    </section>
   );
 }

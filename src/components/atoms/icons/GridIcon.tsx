@@ -1,4 +1,4 @@
-import { ReactComponent as Grid } from "../../../assets/icons/grid.svg";
+import Grid from "@/assets/icons/grid.svg?react";
 
 export default function GridIcon() {
   return <Grid />;

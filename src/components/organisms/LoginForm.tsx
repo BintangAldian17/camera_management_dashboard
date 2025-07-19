@@ -1,13 +1,13 @@
-import React, { useState } from "react";
-import InputField from "../molecules/InputField";
-import Button from "../atoms/Button";
-import type { LoginPayload } from "../../types/login-type";
-import { useLoginMutation } from "../../lib/api/login-api";
-import { AxiosError } from "axios";
-import LogoSmall from "../../assets/images/logo-small.png";
+import { useLoginMutation } from "@/lib/api/login-api";
+import { useAuth } from "@/lib/hooks/use-auth";
+import type { LoginPayload } from "@/types/login-type";
 import { useNavigate } from "@tanstack/react-router";
-import { useAuth } from "../../lib/hooks/use-auth";
-import XIcon from "../atoms/icons/XIcon";
+import { AxiosError } from "axios";
+import { useState } from "react";
+import LogoSmall from "@/assets/images/logo-small.png";
+import XIcon from "@/components/atoms/icons/XIcon";
+import InputField from "@/components/molecules/InputField";
+import Button from "@/components/atoms/Button";
 
 export default function LoginForm() {
   const navigate = useNavigate();
