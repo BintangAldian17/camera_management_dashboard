@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 
-type ObserverRect = Omit<DOMRectReadOnly, "toJSON">;
+export type ObserverRect = Omit<DOMRectReadOnly, "toJSON">;
 
 const defaultState: ObserverRect = {
   x: 0,

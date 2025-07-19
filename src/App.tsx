@@ -8,6 +8,9 @@ const queryClient = new QueryClient({
     queries: {
       refetchOnMount: false,
       refetchOnWindowFocus: false,
+      staleTime: 0,
+      gcTime: 10 * 60 * 1000,
+      retry: 1,
     },
   },
 });
@@ -19,6 +22,7 @@ const router = createRouter({
     user: null,
   },
   defaultErrorComponent: GlobalError,
+  notFoundMode: "root",
 });
 
 // Register things for typesafety

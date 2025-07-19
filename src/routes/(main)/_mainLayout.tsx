@@ -8,6 +8,7 @@ export const Route = createFileRoute("/(main)/_mainLayout")({
     const user = await context.queryClient.fetchQuery({
       queryKey: ["user"],
       queryFn: getCurrentUser,
+      staleTime: 5 * 60 * 1000, // 5 minutes
     });
     const isAdmin =
       user && user?.username?.trim().toLocaleLowerCase() === "admin";

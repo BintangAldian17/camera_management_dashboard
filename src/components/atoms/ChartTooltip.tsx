@@ -1,4 +1,3 @@
-import React from "react";
 import { type TooltipProps } from "recharts";
 
 export default function ChartTooltip(

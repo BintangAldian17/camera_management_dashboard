@@ -1,26 +1,19 @@
 import { createFileRoute } from "@tanstack/react-router";
-import LoginForm from "../../components/organisms/LoginForm";
-import IlustrationLogin from "../../assets/images/ilustration-login.png";
-import Footer from "../../components/atoms/Footer";
+import LoginForm from "@/components/organisms/LoginForm";
+import LoginLayout from "@/components/templates/LoginLayout";
+import { APP_NAME } from "@/lib/constant";
 
 export const Route = createFileRoute("/(auth)/login")({
   component: RouteComponent,
+  head: () => ({
+    meta: [{ title: `${APP_NAME} | Login` }],
+  }),
 });
 
 function RouteComponent() {
   return (
-    <main className="max-h-screen h-screen w-full max-w-[1700px] mx-auto flex flex-col items-center pb-[22px] justify-center relative md:p-0 p-5">
-      <div className="flex items-center justify-center grow w-full h-full ">
-        <LoginForm />
-        <div className="2xl:w-[766px] w-full 2xl:static absolute 2xl:h-full h-screen 2xl:z-0 -z-20 hidden xl:block">
-          <img
-            alt="Ilustration Login"
-            src={IlustrationLogin}
-            className="h-full w-full 2xl:object-contain object-cover"
-          />
-        </div>
-      </div>
-      <Footer className="mt-auto " />
-    </main>
+    <LoginLayout>
+      <LoginForm />
+    </LoginLayout>
   );
 }
