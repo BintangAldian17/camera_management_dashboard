@@ -54,11 +54,13 @@ camera_management_dashboard/
    ```bash
    yarn install
    ```
-3. \*\*Environment Variables
+3. **Environment Variables**
+
    ```bash
    VITE_API_URL=<API URL>
 
    ```
+
 4. **Start the development server**:
 
    ```bash
