@@ -1,5 +1,6 @@
-import Card from "../atoms/Card";
+import Card from "@/components/atoms/Card";
 import { useRouteContext } from "@tanstack/react-router";
+import Text from "@/components/atoms/Text";
 
 export default function GreetingCard() {
   const userData = useRouteContext({
@@ -9,8 +10,12 @@ export default function GreetingCard() {
 
   return (
     <Card className="flex flex-col p-5 gap-[5px]">
-      <h2 className="font-bold text-[32px]">Hello, {userData?.username}</h2>
-      <span className="text-muted-foreground">Have a great working day!</span>
+      <Text as="h2" variant="title">
+        Hello, {userData?.username}
+      </Text>
+      <Text as="span" variant="body" className="text-muted-foreground">
+        Have a great working day!
+      </Text>
     </Card>
   );
 }

@@ -10,6 +10,7 @@ import InputField from "@/components/molecules/InputField";
 import Button from "@/components/atoms/Button";
 import { useInputFocus } from "@/lib/hooks/use-input-focus";
 import toast from "react-hot-toast";
+import Text from "@/components/atoms/Text";
 
 export default function LoginForm() {
   const navigate = useNavigate();
@@ -51,11 +52,13 @@ export default function LoginForm() {
     <div className="flex flex-col items-start md:w-[500px] w-full bg-white shadow-card rounded-[10px] p-8 2xl:bg-transparent 2xl:shadow-none 2xl:p-0 2xl:rounded-none 2xl:w-[564px]">
       <div className="flex gap-[34px] items-center  mb-5">
         <img alt="Logo" src={LogoSmall} />
-        <h1 className="font-bold text-[64px]">Login</h1>
+        <Text as="h1" variant="display">
+          Login
+        </Text>
       </div>
-      <h2 className="font-bold text-[40px] text-link-inactive mb-[25px]">
+      <Text as="h2" variant="headline" className="text-link-inactive mb-[25px]">
         Login Page
-      </h2>
+      </Text>
       <form className="flex flex-col gap-[25px] w-full" onSubmit={handleSubmit}>
         {errorMessage && (
           <div className="w-full flex justify-between items-center py-5 px-[15px] bg-destructive/30 rounded-[6px] text-start">

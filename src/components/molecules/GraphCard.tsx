@@ -3,6 +3,7 @@ import Card from "@/components/atoms/Card";
 import type { GraphData } from "@/types/graph-type";
 import { useResizeObserver } from "@/lib/hooks/use-resize-observer";
 import SkeletonBox from "@/components/atoms/Skeleton";
+import Text from "../atoms/Text";
 
 const GraphChart = lazy(() => import("@/components/atoms/GraphChart"));
 
@@ -24,7 +25,9 @@ export default function GraphCard({ data, title, isLoading }: GraphCardProps) {
 
   return (
     <Card as="template" className="flex flex-col p-[30px] gap-5 h-fit">
-      <h2 className="text-2xl xl:text-[32px] font-bold">{title}</h2>
+      <Text as="h2" variant="title">
+        {title}
+      </Text>
       <div className=" xl:h-[197px] h-40" ref={ref}>
         {isLoading ? (
           <SkeletonBox className="w-full h-full animate-pulse" />

@@ -1,6 +1,7 @@
-import { cn } from "../../lib/utils";
-import Card from "../atoms/Card";
-import CameraCardSkeleton from "./skeleton/CameraCardSkeleton";
+import { cn } from "@/lib/utils";
+import Card from "@/components/atoms/Card";
+import Text from "@/components/atoms/Text";
+import CameraCardSkeleton from "@/components/molecules/skeleton/CameraCardSkeleton";
 
 type CameraCardProps = {
   total: number;
@@ -48,8 +49,16 @@ export default function CameraCard({
             {icon}
           </div>
           <div className="flex flex-col justify-center gap-2.5 p-5">
-            <h2 className="font-bold text-primary text-[32px] ">{total}</h2>
-            <p className="text-muted-foreground text-[20px]">{desc}</p>
+            <Text as="span" variant="title" className="text-primary">
+              {total}
+            </Text>
+            <Text
+              as="h2"
+              variant="subtitle"
+              className="text-muted-foreground font-normal"
+            >
+              {desc}
+            </Text>
           </div>
         </>
       )}

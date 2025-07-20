@@ -1,6 +1,7 @@
 import { Area, AreaChart, Tooltip } from "recharts";
 import ChartTooltip from "@/components/atoms/ChartTooltip";
 import type { ObserverRect } from "@/lib/hooks/use-resize-observer";
+import Text from "./Text";
 
 type GraphChartprops = {
   rect: ObserverRect;
@@ -10,8 +11,14 @@ type GraphChartprops = {
 export default function GraphChart({ chartData, rect }: GraphChartprops) {
   if (chartData.length === 0) {
     return (
-      <div className="w-full h-full flex items-center justify-center text-muted-foreground xl:text-xl text-sm italic">
-        No chart data available yet
+      <div className="w-full h-full flex items-center justify-center">
+        <Text
+          as="span"
+          variant="subtitle"
+          className="italic font-normal text-muted-foreground"
+        >
+          No chart data available yet
+        </Text>
       </div>
     );
   }
