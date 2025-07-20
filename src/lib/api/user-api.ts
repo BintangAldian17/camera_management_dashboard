@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import type { UserData } from "../../types/user-type";
-import { authApi } from "../service/axios";
+import { authApi } from "../services/axios";
 
 export const getCurrentUser = async () => {
   const token = window.localStorage.getItem("access_token");

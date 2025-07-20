@@ -26,7 +26,6 @@ const sidebarsData = [
 
 export default function SideBar() {
   const { isOpen, toggle } = useSidebar();
-  console.log(isOpen);
   return (
     <>
       <div

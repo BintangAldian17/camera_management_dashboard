@@ -1,10 +1,12 @@
+import { TOKEN_KEY } from "../constant";
+
 export const useAuth = () => {
   const signIn = (token: string) => {
-    localStorage.setItem("access_token", token);
+    localStorage.setItem(TOKEN_KEY, token);
   };
   const signOut = () => {
-    localStorage.removeItem("access_token");
+    localStorage.removeItem(TOKEN_KEY);
   };
-  const getToken = () => localStorage.getItem("access_token");
+  const getToken = () => localStorage.getItem(TOKEN_KEY);
   return { signIn, signOut, getToken };
 };

@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import type { CameraData } from "../../types/camera-type";
-import { authApi } from "../service/axios";
+import { authApi } from "../services/axios";
 
 const getCamera = async () => {
   const token = window.localStorage.getItem("access_token");

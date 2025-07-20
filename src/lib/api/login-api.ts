@@ -1,6 +1,6 @@
 import { useMutation } from "@tanstack/react-query";
 import type { LoginPayload, LoginResponse } from "../../types/login-type";
-import { publicApi } from "../service/axios";
+import { publicApi } from "../services/axios";
 
 const loginApi = async (payload: LoginPayload) => {
   try {

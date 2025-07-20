@@ -1,9 +1,7 @@
 import axios from "axios";
-import { API_URL } from "../constant";
+import { API_URL, TOKEN_KEY } from "../constant";
 import toast from "react-hot-toast";
-import { createBrowserHistory } from "@tanstack/react-router";
-
-const history = createBrowserHistory();
+import { router } from "@/lib/services/router";
 
 const baseApi = axios.create({ baseURL: API_URL });
 
@@ -12,7 +10,7 @@ export const publicApi = baseApi;
 export const authApi = axios.create({ baseURL: API_URL });
 
 authApi.interceptors.request.use((config) => {
-  const token = localStorage.getItem("access_token");
+  const token = localStorage.getItem(TOKEN_KEY);
 
   if (token) {
     config.headers.Authorization = `Bearer ${token}`;
@@ -24,10 +22,9 @@ authApi.interceptors.response.use(
   (response) => response,
   (err) => {
     if (err.response?.status === 401) {
-      localStorage.removeItem("token");
-      sessionStorage.removeItem("token");
+      localStorage.removeItem(TOKEN_KEY);
       toast.error("Session expired, please login again");
-      history.push("/login");
+      router.navigate({ to: "/login" });
     }
     return Promise.reject(err);
   }

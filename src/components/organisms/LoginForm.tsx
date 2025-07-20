@@ -26,7 +26,6 @@ export default function LoginForm() {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    console.log(name, value);
     setLoginValues((prev) => ({ ...prev, [name]: value }));
   };
 
@@ -35,13 +34,13 @@ export default function LoginForm() {
     mutate(loginValues, {
       onSuccess: (data) => {
         signIn(data.token);
+        setErrorMessage("");
         setLoginValues({ password: "", username: "" });
         navigate({ to: "/" });
         toast.success("Login successful!");
       },
       onError: (err: unknown) => {
         if (err instanceof AxiosError) {
-          console.log(err.response?.data);
           setErrorMessage(err.response?.data?.error ?? err.message);
         }
       },

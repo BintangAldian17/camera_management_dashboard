@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import type { GraphData } from "../../types/graph-type";
-import { authApi } from "../service/axios";
+import { authApi } from "../services/axios";
 
 type GraphPath = "cpu" | "memory" | "storage";
 
